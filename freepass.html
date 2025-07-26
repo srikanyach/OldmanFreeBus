@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>Free pass checking</title>
+        <style>
+         body{
+            margin:100px;
+            background-color: rgba(23, 151, 151, 0.123);
+            font-size: 30px;
+         }
+         button{
+            border-radius: 10px;
+            border:2px solid greenyellow;
+            padding:20px;
+            background-color: deepskyblue;
+            color:white;
+            font-size: 20px;
+         }
+         button:focus{
+            background-color: brown; 
+            color:white;
+            padding:20px;
+            font-size: 20px;
+         }
+        </style>
+    </head>
+    <body>
+        <center>
+       <div>
+        <div>
+           <img src="oldmanfreebus.webp">
+           <br>
+           <br>
+            <label>
+                <input type="checkbox" id="seatAvailable"/>
+                Is seat Available?
+            </label>
+            <br><br>
+
+            <label>
+                <input type="checkbox" id="ageAbove50"/>
+                Is the Above age is greaterthan 50?
+            </label>
+            <br><br>
+
+
+            <label>
+                <input type="checkbox" id="hasAadhar"/>
+                Do you have Adahar card?
+            </label>
+            <br><br>
+            <button id="checkStatus">check</button>
+            <p id="status"></p>
+        </div>
+       </div>
+
+
+        <script>
+        const seatAvailable=document.getElementById("seatAvailable");
+        const ageAbove50=document.getElementById("ageAbove50");
+        const hasAadhar=document.getElementById("hasAadhar");
+        const checkButton=document.getElementById("checkStatus");
+        const passengersStatus=document.getElementById("status");
+
+        checkButton.addEventListener("click",function(){
+            let isSeatAvailable = seatAvailable.checked;
+            let isageAbove50 = ageAbove50.checked;
+            let hasAadharCard= hasAadhar.checked;
+            console.log(isSeatAvailable, isageAbove50, hasAadharCard);
+            if(isSeatAvailable){
+             console.log("seatis available");
+             
+                if(isageAbove50){
+                    console.log("ageabove 50");
+             
+                       if(hasAadharCard){
+                         console.log("has adhar card");
+                         alert("please come inside the bus");
+                        }
+                        else{
+                           console.log("but you dont have adhar card");
+                           passengersStatus.textContent="Seat is available,but you dont have adahar card";;
+                        }
+                    }
+            else{
+                console.log("but your age is below 50 years");
+                passengersStatus.textContent="Seat is available,but your age is below 50 years";
+            }
+            }
+            else{
+              console.log("Seat is not available");
+              passengersStatus.textContent="Seat is not available";
+            }
+        });
+        </script>
+        </center>
+    </body>
+</html>
